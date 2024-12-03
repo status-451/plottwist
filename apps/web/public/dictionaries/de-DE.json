@@ -678,7 +678,6 @@
   "never_been_easier": "war noch nie so einfach.",
   "most_apps_functional": "Die meisten Apps sind funktional, aber langweilig.",
   "plotwist_incredible_interface": "Bei Plotwist bevorzugen wir eine unglaubliche Benutzeroberfläche, auch wenn Sie diese Serie auf Ihrer Liste nie ansehen.",
-  "get_one_month_free": "Erhalten Sie 1 Monat kostenlos",
   "keep_exploring": "Weiter erkunden",
   "elegant_control": "Elegante Kontrolle",
   "elegant_control_description": "Behalten Sie alles im Griff. Markieren Sie, was Sie gesehen haben, organisieren Sie nach Status und verlieren Sie sich nie in Ihren Marathons.",
@@ -729,5 +728,6 @@
   "best_reviews_description": "Ihre zuletzt am besten bewerteten Werke",
   "title_status": "Status der Titel",
   "title_status_description": "Gesehen, wird gesehen und Watchlist",
-  "titles": "Titel"
+  "titles": "Titel",
+  "get_14_days_free": "Erhalten Sie 14 Tage kostenlos"
 }
