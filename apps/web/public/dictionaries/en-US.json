@@ -552,9 +552,6 @@
   "manage_your_lists": "Manage your lists and share them with other members!",
   "lists": "Lists",
   "latest_lists": "Recent Lists",
-  "last_week": "Last week",
-  "last_month": "Last month",
-  "all_time": "All time",
   "follow": "Follow",
   "unfollow": "Unfollow",
   "followers": "Followers",
@@ -724,5 +721,9 @@
   "title_status": "Title Status",
   "title_status_description": "Watched, watching and watchlist",
   "titles": "Titles",
-  "get_14_days_free": "Get 14 days free"
+  "get_14_days_free": "Get 14 days free",
+  "today": "Heute",
+  "this_week": "Diese Woche",
+  "this_month": "Diesen Monat",
+  "all_time": "Immer"
 }

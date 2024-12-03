@@ -553,9 +553,6 @@
   "manage_your_lists": "Gestisci le tue liste e condividile con altri membri!",
   "lists": "Liste",
   "latest_lists": "Liste recenti",
-  "last_week": "Ultima settimana",
-  "last_month": "Ultimo mese",
-  "all_time": "Tutto il tempo",
   "follow": "Segui",
   "unfollow": "Smetti di seguire",
   "followers": "Seguace",
@@ -726,5 +723,9 @@
   "title_status": "Stato dei titoli",
   "title_status_description": "Guardati, in visione e lista da guardare",
   "titles": "Titoli",
-  "get_14_days_free": "Ottieni 14 giorni gratis"
+  "get_14_days_free": "Ottieni 14 giorni gratis",
+  "today": "Oggi",
+  "this_week": "Questa settimana",
+  "this_month": "Questo mese",
+  "all_time": "Sempre"
 }

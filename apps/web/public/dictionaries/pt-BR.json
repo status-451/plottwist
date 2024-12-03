@@ -551,9 +551,6 @@
   "my_lists": "Minhas listas",
   "manage_your_lists": "Gerencie suas listas de filmes e séries e compartilhe com outros membros!",
   "latest_lists": "Listas recentes",
-  "last_week": "Última semana",
-  "last_month": "Último mês",
-  "all_time": "Todo o período",
   "follow": "Seguir",
   "unfollow": "Deixar de seguir",
   "followers": "Seguidores",
@@ -724,5 +721,9 @@
   "title_status": "Status dos títulos",
   "title_status_description": "Assistidos, assistindo e assistir",
   "titles": "Títulos",
-  "get_14_days_free": "Ganhe 14 dias grátis"
+  "get_14_days_free": "Ganhe 14 dias grátis",
+  "today": "Hoje",
+  "this_week": "Essa semana",
+  "this_month": "Esse mês",
+  "all_time": "Sempre"
 }

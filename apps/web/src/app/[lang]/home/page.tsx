@@ -5,7 +5,10 @@ import { PosterCard } from '@/components/poster-card'
 import { Separator } from '@plotwist/ui/components/ui/separator'
 import { Container } from '../_components/container'
 
-import { PopularReviews } from './_components/popular-reviews'
+import {
+  PopularReviews,
+  PopularReviewsSkeleton,
+} from './_components/popular-reviews'
 import { UserLastReview } from './_components/user-last-review'
 
 import type { PageProps } from '@/types/languages'
@@ -13,9 +16,10 @@ import { getDictionary } from '@/utils/dictionaries'
 
 import { tmdb } from '@/services/tmdb'
 import { tmdbImage } from '@/utils/tmdb/image'
+import { Suspense } from 'react'
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
-  const params = await props.params;
+  const params = await props.params
   const {
     app_page: { dashboard_title: title, dashboard_description: description },
   } = await getDictionary(params.lang)
@@ -36,11 +40,8 @@ export async function generateMetadata(props: PageProps): Promise<Metadata> {
 }
 
 const HomePage = async (props: PageProps) => {
-  const params = await props.params;
-
-  const {
-    lang
-  } = params;
+  const params = await props.params
+  const { lang } = params
 
   const dictionary = await getDictionary(lang)
 
@@ -74,6 +75,7 @@ const HomePage = async (props: PageProps) => {
         <div className="space-y-8">
           <UserLastReview />
           <Separator className="bg-muted/75" />
+
           <PopularReviews />
         </div>
 
