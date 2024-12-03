@@ -5,10 +5,7 @@ import { PosterCard } from '@/components/poster-card'
 import { Separator } from '@plotwist/ui/components/ui/separator'
 import { Container } from '../_components/container'
 
-import {
-  PopularReviews,
-  PopularReviewsSkeleton,
-} from './_components/popular-reviews'
+import { PopularReviews } from './_components/popular-reviews'
 import { UserLastReview } from './_components/user-last-review'
 
 import type { PageProps } from '@/types/languages'
@@ -16,7 +13,6 @@ import { getDictionary } from '@/utils/dictionaries'
 
 import { tmdb } from '@/services/tmdb'
 import { tmdbImage } from '@/utils/tmdb/image'
-import { Suspense } from 'react'
 
 export async function generateMetadata(props: PageProps): Promise<Metadata> {
   const params = await props.params
