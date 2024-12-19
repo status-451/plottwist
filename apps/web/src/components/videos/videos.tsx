@@ -9,7 +9,7 @@ type VideoProps = {
   video: VideoType
 }
 
-const Video = ({ video }: VideoProps) => {
+export const Video = ({ video }: VideoProps) => {
   const videoUrlBySite: Record<string, string> = {
     YouTube: `https://www.youtube.com/embed/${video.key}?rel=0&modestbranding=1&autohide=1&showinfo=0`,
     Vimeo: `https://player.vimeo.com/video/${video.key}`,

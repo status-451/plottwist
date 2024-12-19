@@ -11,11 +11,11 @@ import {
   TooltipTrigger,
 } from '@plotwist/ui/components/ui/tooltip'
 
-type TvSerieEpisodeCardProps = {
+type SeasonEpisodeCardProps = {
   episode: Episode
 }
 
-export const TvSerieEpisodeCard = ({ episode }: TvSerieEpisodeCardProps) => {
+export const SeasonEpisodeCard = ({ episode }: SeasonEpisodeCardProps) => {
   const {
     name,
     still_path: path,

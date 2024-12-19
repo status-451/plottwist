@@ -16,17 +16,15 @@ import {
 } from '@plotwist/ui/components/ui/table'
 
 import type { Episode } from '@/services/tmdb'
-import { TvSerieEpisodeCard } from './tv-serie-season-episode-card'
+import { SeasonEpisodeCard } from './season-episode-card'
 
-type TvSerieSeasonDetailsContentProps = {
+type SeasonEpisodesProps = {
   episodes: Episode[]
 }
 
 type Layout = 'grid' | 'table'
 
-export const TvSerieSeasonDetailsContent = ({
-  episodes,
-}: TvSerieSeasonDetailsContentProps) => {
+export const SeasonEpisodes = ({ episodes }: SeasonEpisodesProps) => {
   const [layout, setLayout] = useState<Layout>('grid')
 
   const {
@@ -41,7 +39,7 @@ export const TvSerieSeasonDetailsContent = ({
     grid: (
       <div className="mt-2 grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2 md:grid-cols-3">
         {episodes.map(episode => (
-          <TvSerieEpisodeCard episode={episode} key={episode.id} />
+          <SeasonEpisodeCard episode={episode} key={episode.id} />
         ))}
       </div>
     ),

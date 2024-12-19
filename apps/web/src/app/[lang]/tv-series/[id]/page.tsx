@@ -65,9 +65,10 @@ export async function generateMetadata(
   }
 }
 
-const TvSeriePage = async (props: TvSeriePageProps) => {
-  const params = await props.params
-  return <TvSerieDetails id={Number(params.id)} language={params.lang} />
+const TvSeriePage = async ({ params }: TvSeriePageProps) => {
+  const { id, lang } = await params
+
+  return <TvSerieDetails id={Number(id)} language={lang} />
 }
 
 export default TvSeriePage

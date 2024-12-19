@@ -63,8 +63,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/ui
       '@plotwist_app/tmdb':
-        specifier: ^0.0.8
-        version: 0.0.8(postcss@8.4.49)
+        specifier: ^0.1.7
+        version: 0.1.7(postcss@8.4.49)
       '@radix-ui/react-accordion':
         specifier: ^1.2.0
         version: 1.2.1(@types/react-dom@18.3.1)(@types/react@18.3.12)(react-dom@18.3.1)(react@18.3.1)
@@ -3334,10 +3334,11 @@ packages:
     requiresBuild: true
     optional: true
 
-  /@plotwist_app/tmdb@0.0.8(postcss@8.4.49):
-    resolution: {integrity: sha512-A6u2JIKVLs4YqyIBbpqwe3zhqsMLRGV1q362Zmc3vEyyNTw9BRrIPecsWU2eMKSP1mld9t0DOLSFcPpf2GslLg==}
+  /@plotwist_app/tmdb@0.1.7(postcss@8.4.49):
+    resolution: {integrity: sha512-KV/zQnxsZckmJkAAe4Ox0Scpw6hZvzbzxIMolYeM4ynY1Zn6Wp/ChPf3BVS36gRjxpQMlLG+IUFAgEA4pMGZoQ==}
     dependencies:
       axios: 1.7.8
+      https: 1.0.0
       tsup: 8.3.5(postcss@8.4.49)(typescript@5.7.2)
       typescript: 5.7.2
     transitivePeerDependencies:
@@ -8396,6 +8397,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /https@1.0.0:
+    resolution: {integrity: sha512-4EC57ddXrkaF0x83Oj8sM6SLQHAWXw90Skqu2M4AEWENZ3F02dFJE/GARA8igO79tcgYqGrD7ae4f5L3um2lgg==}
+    dev: false
 
   /human-signals@2.1.0:
     resolution: {integrity: sha512-B4FFZ6q/T2jhhksgkbEW3HBvWIfDW85snkQgawt07S7J5QXTk6BkNV+0yAeZrM5QpMAdYlocGoljn0sJ/WQkFw==}

@@ -9,7 +9,7 @@ export type ImagesProps = {
 export const Images = async ({ tmdbId, variant }: ImagesProps) => {
   const { backdrops, posters, profiles } = await tmdb.images(variant, tmdbId)
 
-  const images = () => {
+  const orderImages = () => {
     if (variant === 'person')
       return [...profiles].sort((a, b) => b.vote_count - a.vote_count)
 
@@ -18,5 +18,5 @@ export const Images = async ({ tmdbId, variant }: ImagesProps) => {
     )
   }
 
-  return <ImagesMasonry images={images()} />
+  return <ImagesMasonry images={orderImages()} />
 }
