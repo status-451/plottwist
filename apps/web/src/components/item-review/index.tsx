@@ -6,8 +6,8 @@ import { useSession } from '@/context/session'
 import { Button } from '@plotwist/ui/components/ui/button'
 import { Star } from 'lucide-react'
 import { useParams, usePathname } from 'next/navigation'
-import { Suspense } from 'react'
 import { ReviewFormDialog } from '../reviews/review-form-dialog'
+import Link from 'next/link'
 
 function ItemReviewContent() {
   const pathname = usePathname()
@@ -35,11 +35,17 @@ function ItemReviewContent() {
 
 export function ItemReview() {
   const { user } = useSession()
-  if (!user) return
+  const { dictionary, language } = useLanguage()
 
-  return (
-    <Suspense fallback>
-      <ItemReviewContent />
-    </Suspense>
-  )
+  if (!user)
+    return (
+      <Link href={`/${language}/sign-in`}>
+        <Button size="sm" variant="outline">
+          <Star size={14} className="mr-2" />
+          {dictionary.review}
+        </Button>
+      </Link>
+    )
+
+  return <ItemReviewContent />
 }

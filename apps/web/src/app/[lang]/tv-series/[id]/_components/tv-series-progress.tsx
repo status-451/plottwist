@@ -7,6 +7,7 @@ import {
 import { useGetUserItemSuspense, usePutUserItem } from '@/api/user-items'
 import { APP_QUERY_CLIENT } from '@/context/app'
 import { useLanguage } from '@/context/language'
+import { useSession } from '@/context/session'
 import { useMediaQuery } from '@/hooks/use-media-query'
 import { cn } from '@/lib/utils'
 import type { Episode, SeasonDetails } from '@/services/tmdb'
@@ -36,14 +37,14 @@ import { ScrollArea } from '@plotwist/ui/components/ui/scroll-area'
 import { Separator } from '@plotwist/ui/components/ui/separator'
 import { isBefore } from 'date-fns'
 import { Check, CheckCircle2Icon, ChevronDownIcon } from 'lucide-react'
-import { useRef } from 'react'
+import { Suspense, useRef } from 'react'
 
 type TvSeriesProgressProps = {
   seasonsDetails: SeasonDetails[]
   tmdbId: number
 }
 
-export function TvSeriesProgress({
+function TvSeriesProgressContent({
   seasonsDetails,
   tmdbId,
 }: TvSeriesProgressProps) {
@@ -373,5 +374,32 @@ export function TvSeriesProgress({
       </DrawerTrigger>
       <DrawerContent className="p-0">{content}</DrawerContent>
     </Drawer>
+  )
+}
+
+export function TvSeriesProgress(props: TvSeriesProgressProps) {
+  const { user } = useSession()
+  const { dictionary } = useLanguage()
+
+  if (!user) {
+    return (
+      <Button size="sm" variant="outline">
+        <Check className="mr-2" size={14} />
+        {dictionary.update_progress}
+      </Button>
+    )
+  }
+
+  return (
+    <Suspense
+      fallback={
+        <Button size="sm" variant="outline" disabled>
+          <Check className="mr-2" size={14} />
+          {dictionary.update_progress}
+        </Button>
+      }
+    >
+      <TvSeriesProgressContent {...props} />
+    </Suspense>
   )
 }

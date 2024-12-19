@@ -26,14 +26,13 @@ type Layout = 'grid' | 'table'
 
 export const SeasonEpisodes = ({ episodes }: SeasonEpisodesProps) => {
   const [layout, setLayout] = useState<Layout>('grid')
+  const { dictionary } = useLanguage()
 
   const {
-    dictionary: {
-      tv_serie_season_details: { name, overview, runtime, vote },
-      grid,
-      table,
-    },
-  } = useLanguage()
+    tv_serie_season_details: { name, overview, runtime, vote },
+    grid,
+    table,
+  } = dictionary
 
   const contentByLayout: Record<Layout, JSX.Element> = {
     grid: (

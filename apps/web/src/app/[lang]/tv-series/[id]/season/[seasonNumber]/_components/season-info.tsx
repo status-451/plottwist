@@ -1,3 +1,4 @@
+import { ItemReview } from '@/components/item-review'
 import { Poster } from '@/components/poster'
 import type { Language } from '@/types/languages'
 import { locale } from '@/utils/date/locale'
@@ -20,6 +21,12 @@ type SeasonInfoProps = {
 
 export function SeasonInfo({ season, serie, language }: SeasonInfoProps) {
   const { poster_path, air_date, name, overview, vote_average } = season
+
+  const actions = (
+    <div className="flex flex-wrap items-center gap-1">
+      <ItemReview />
+    </div>
+  )
 
   const votes = (
     <Badge>
@@ -71,12 +78,14 @@ export function SeasonInfo({ season, serie, language }: SeasonInfoProps) {
           <p className="hidden text-xs leading-5 text-muted-foreground md:block md:text-sm md:leading-6">
             {overview}
           </p>
+
+          <div className="hidden md:block">{actions}</div>
         </article>
       </div>
 
       <div className="space-y-2 md:hidden">
+        {actions}
         <p className="text-sm/7 text-muted-foreground">{overview}</p>
-
         <div className="flex gap-2 flex-wrap">{votes}</div>
       </div>
     </section>

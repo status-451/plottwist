@@ -65,6 +65,8 @@ export async function generateMetadata(
   }
 }
 
+export const dynamic = 'force-static'
+
 const TvSeriePage = async ({ params }: TvSeriePageProps) => {
   const { id, lang } = await params
 

@@ -1,17 +1,37 @@
-import { tmdb } from '@/services/tmdb'
-import type { Language } from '@/types/languages'
+import { type Language, tmdb } from '@/services/tmdb'
 import { getDictionary } from '@/utils/dictionaries'
-import { CreditCard } from './credit-card'
 import { getDepartamentLabel } from '@/utils/tmdb/department'
+import { CreditCard } from './credit-card'
 
-export type CreditsProps = {
-  variant: 'movie' | 'tv'
+type BaseProps = {
   id: number
   language: Language
 }
 
-export const Credits = async ({ variant, id, language }: CreditsProps) => {
-  const { cast, crew } = await tmdb.credits(variant, id, language)
+type MovieOrTvCredits = {
+  variant: 'movie' | 'tv'
+} & BaseProps
+
+type SeasonCredits = {
+  variant: 'season'
+  season: number
+} & BaseProps
+
+export type CreditsProps = MovieOrTvCredits | SeasonCredits
+
+export async function Credits(props: CreditsProps) {
+  const { variant, id, language } = props
+
+  const getCredits = async () => {
+    if (variant === 'season') {
+      const { season } = props
+      return await tmdb.season.credits(id, season)
+    }
+
+    return await tmdb.credits(variant, id, language)
+  }
+
+  const { cast, crew } = await getCredits()
   const dictionary = await getDictionary(language)
 
   return (
@@ -19,51 +39,33 @@ export const Credits = async ({ variant, id, language }: CreditsProps) => {
       className="grid grid-cols-1 lg:grid-cols-2 gap-8"
       data-testid="credits"
     >
-      <section className="">
+      <section>
         <h5 className="text-lg font-medium">{dictionary.credits.cast}</h5>
-
-        <ul className="">
-          {cast.map(
-            ({
-              profile_path: profilePath,
-              name,
-              character,
-              credit_id: creditId,
-              id,
-            }) => (
-              <CreditCard
-                key={creditId}
-                imagePath={profilePath}
-                name={name}
-                role={character}
-                href={`/${language}/people/${id}`}
-              />
-            )
-          )}
+        <ul>
+          {cast.map(({ profile_path, name, character, credit_id, id }) => (
+            <CreditCard
+              key={credit_id}
+              imagePath={profile_path}
+              name={name}
+              role={character}
+              href={`/${language}/people/${id}`}
+            />
+          ))}
         </ul>
       </section>
 
-      <section className="">
+      <section>
         <h5 className="text-lg font-medium">{dictionary.credits.crew}</h5>
-
-        <ul className="">
-          {crew.map(
-            ({
-              profile_path: profilePath,
-              name,
-              department,
-              credit_id: creditId,
-              id,
-            }) => (
-              <CreditCard
-                key={creditId}
-                imagePath={profilePath}
-                name={name}
-                role={getDepartamentLabel(dictionary, department)}
-                href={`/${language}/people/${id}`}
-              />
-            )
-          )}
+        <ul>
+          {crew.map(({ profile_path, name, department, credit_id, id }) => (
+            <CreditCard
+              key={credit_id}
+              imagePath={profile_path}
+              name={name}
+              role={getDepartamentLabel(dictionary, department)}
+              href={`/${language}/people/${id}`}
+            />
+          ))}
         </ul>
       </section>
     </div>

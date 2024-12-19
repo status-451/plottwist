@@ -41,9 +41,7 @@ export async function TvSerieInfos({ tvSerie, language }: TvSerieInfosProps) {
   const actions = (
     <div className="flex flex-wrap items-center gap-1">
       <ListsDropdown item={tvSerie} />
-
       <ItemReview />
-
       {session?.user && (
         <Suspense fallback={<div />}>
           <TvSeriesProgress
@@ -52,7 +50,6 @@ export async function TvSerieInfos({ tvSerie, language }: TvSerieInfosProps) {
           />
         </Suspense>
       )}
-
       <ItemStatus tmdbId={tvSerie.id} mediaType="TV_SHOW" />
     </div>
   )

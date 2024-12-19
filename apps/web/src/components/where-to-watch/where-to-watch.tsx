@@ -5,18 +5,40 @@ import type { Buy, Language, Rent } from '@plotwist_app/tmdb'
 import { X } from 'lucide-react'
 import Image from 'next/image'
 
-type WhereToWatchProps = {
+type WhereToWatchBaseProps = {
   id: number
-  variant: 'movie' | 'tv'
   language: Language
 }
+
+type WhereToWatchSeasonProps = WhereToWatchBaseProps & {
+  variant: 'season'
+  seasonNumber: number
+}
+
+type WhereToWatchOtherProps = WhereToWatchBaseProps & {
+  variant: 'movie' | 'tv'
+}
+
+type WhereToWatchProps = WhereToWatchSeasonProps | WhereToWatchOtherProps
 
 export async function WhereToWatch({
   id,
   language,
   variant,
+  ...rest
 }: WhereToWatchProps) {
-  const { results } = await tmdb.watchProviders.item(variant, id)
+  const getResults = async () => {
+    if (variant === 'season') {
+      const { seasonNumber } = rest as WhereToWatchSeasonProps
+      const { results } = await tmdb.season.watchProviders(id, seasonNumber)
+      return results
+    }
+
+    const { results } = await tmdb.watchProviders.item(variant, id)
+    return results
+  }
+
+  const results = await getResults()
   const dictionary = await getDictionary(language)
 
   const resultsByLanguage = {

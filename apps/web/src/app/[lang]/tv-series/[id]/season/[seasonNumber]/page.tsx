@@ -8,10 +8,11 @@ import {
   TabsList,
   TabsTrigger,
 } from '@plotwist/ui/components/ui/tabs'
-import { SeasonCredits } from '@/components/credits'
+import { Credits } from '@/components/credits'
 import { SeasonImages } from '@/components/images'
 import { SeasonVideos } from '@/components/videos'
 import { SeasonEpisodes } from './_components/season-episodes'
+import { WhereToWatch } from '@/components/where-to-watch'
 
 type Props = PageProps<{ id: string; seasonNumber: string }>
 
@@ -48,28 +49,29 @@ export default async function SeasonNumber({ params }: Props) {
 
         {/* <TabsContent value="reviews" className="mt-4">
         <Reviews tmdbId={id} mediaType="TV_SHOW" />
-      </TabsContent>
-
-      <TabsContent value="where_to_watch">
-        <WhereToWatch id={id} variant="tv" language={language} />
-      </TabsContent>
-
-     
-
-
-      
+      </TabsContent>   
 
       */}
+
+        <TabsContent value="where_to_watch">
+          <WhereToWatch
+            seasonNumber={seasonNumber}
+            id={seriesId}
+            variant="season"
+            language={lang}
+          />
+        </TabsContent>
 
         <TabsContent value="episodes" className="mt-4">
           <SeasonEpisodes episodes={season.episodes} />
         </TabsContent>
 
         <TabsContent value="credits" className="mt-4">
-          <SeasonCredits
-            seasonNumber={seasonNumber}
-            seriesId={seriesId}
+          <Credits
+            season={seasonNumber}
+            id={seriesId}
             language={lang}
+            variant="season"
           />
         </TabsContent>
 
