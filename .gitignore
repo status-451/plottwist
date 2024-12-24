@@ -21,6 +21,8 @@ coverage
 # Vercel
 .vercel
 
+/certs
+
 # Build Outputs
 .next/
 out/
